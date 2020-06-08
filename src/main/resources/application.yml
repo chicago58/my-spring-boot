@@ -1,0 +1,47 @@
+#@Test
+#public void testRepository() {
+#// 查询所有数据
+#List<AyUser> userList = ayUserService.findAll();
+#System.out.println("findAll() :" + userList.size());
+#
+#// 通过name查询数据
+#List<AyUser> userList2 = ayUserService.findByName("ayi");
+#System.out.println("findByName() :" + userList2.size());
+#Assert.isTrue(userList2.get(0).getName().equals("ayi"), "data error!");
+#
+#// 通过name模糊查询数据
+#List<AyUser> userList3 = ayUserService.findByNameLike("%yi%");
+#System.out.println("findByNameLike() :" + userList3.size());
+#Assert.isTrue(userList3.get(0).getName().equals("ayi"), "data error!");
+#
+#// 通过id列表查询数据
+#List<String> ids = new ArrayList<>();
+#ids.add("1");
+#ids.add("2");
+#List<AyUser> userList4 = ayUserService.findByIdIn(ids);
+#System.out.println("findByIdIn() :" + userList4.size());
+#
+#// 分页查询数据
+#//        Pageable pageable = new PageRequest(0, 10, Sort.Direction.ASC, "id");
+#//        Page<AyUser> userList5 = ayUserService.findAll(pageable);
+#//        System.out.println("page findAll() :" + userList5.getTotalPages() + "/" + userList5.getSize());
+#
+#// 新增数据
+#AyUser ayUser = new AyUser();
+#ayUser.setId("3");
+#ayUser.setName("test");
+#ayUser.setPassword("123");
+#ayUserService.save(ayUser);
+#
+#// 删除数据
+#ayUserService.delete("3");
+#}
+#
+#@Test
+#public void testTransaction() {
+#AyUser ayUser = new AyUser();
+#ayUser.setId("3");
+#ayUser.setName("ahua");
+#ayUser.setPassword("123");
+#ayUserService.save(ayUser);
+#}

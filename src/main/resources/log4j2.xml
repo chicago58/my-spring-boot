@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="WARN">
+
+    <appenders>
+        <!-- 打印到控制台 -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- 指定日志输出格式 -->
+            <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
+            <Filters>
+                <ThresholdFilter level="INFO"/>
+            </Filters>
+        </Console>
+
+        <!-- 记录到文件 -->
+        <RollingFile name="RollingFileInfo" fileName="/Users/wangqikang/Code/my-spring-boot/info.log"
+                     filePattern="/Users/wangqikang/Code/my-spring-boot/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
+            <Filters>
+                <ThresholdFilter level="INFO"/>
+            </Filters>
+            <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+
+        </RollingFile>
+    </appenders>
+
+    <loggers>
+        <root level="all">
+            <!-- 控制台输出 -->
+            <appender-ref ref="Console"/>
+            <!-- 记录到文件 -->
+            <appender-ref ref="RollingFileInfo"/>
+        </root>
+    </loggers>
+</Configuration>
